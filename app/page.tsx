@@ -89,7 +89,6 @@ export default function CoffeeCustomizer() {
     let code = `new ${baseCoffeeType.replace(/\s+/g, "")}()`
 
     // Add each decorator with proper indentation
-    // We iterate through the array normally (from first to last added)
     selectedAddOns.forEach((addon, index) => {
       const indentation = "  ".repeat(index + 1)
       const closingIndentation = "  ".repeat(index)
@@ -155,7 +154,10 @@ export default function CoffeeCustomizer() {
                 <div className="flex justify-between items-center">
                   <div className="flex flex-wrap gap-2">
                     <Badge variant="outline" className="bg-amber-800 text-white border-none animate-scaleIn">
-                      {coffee.getIcon()} {baseCoffeeType}
+                      <span className="flex items-center gap-1">
+                        {coffee.getIcon()}
+                        <span>{baseCoffeeType}</span>
+                      </span>
                     </Badge>
 
                     {selectedAddOns.map((addOn, index) => (
@@ -165,8 +167,10 @@ export default function CoffeeCustomizer() {
                         className="bg-amber-600 text-white border-none animate-scaleIn"
                         style={{ animationDelay: `${index * 0.1}s` }}
                       >
-                        {iconMap[addOn as keyof typeof iconMap]}
-                        <span className="ml-1">{addOn}</span>
+                        <span className="flex items-center gap-1">
+                          {iconMap[addOn as keyof typeof iconMap]}
+                          <span>{addOn}</span>
+                        </span>
                       </Badge>
                     ))}
                   </div>
@@ -229,7 +233,6 @@ export default function CoffeeCustomizer() {
                   <div className="relative pl-6 space-y-2">
                     {selectedAddOns.length > 0 ? (
                       <>
-                        {/* Reverse the order of decorators to show proper nesting */}
                         {[...selectedAddOns].reverse().map((addOn, index) => (
                           <div
                             key={index}
@@ -246,7 +249,6 @@ export default function CoffeeCustomizer() {
                             </div>
                           </div>
                         ))}
-                        {/* Base coffee at the bottom (innermost component) */}
                         <div
                           className="relative border-l-2 border-amber-800 pl-4 py-1 animate-slideRight"
                           style={{
