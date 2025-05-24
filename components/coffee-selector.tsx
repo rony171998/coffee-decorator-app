@@ -7,6 +7,7 @@ import { CoffeeCup } from "@/components/coffee-cup"
 import { cn } from "@/lib/utils"
 import { coffeeTypes } from "@/lib/coffee-types"
 import type { ICoffee } from "@/lib/coffee-types"
+import { useSound } from "@/contexts/sound-context"
 
 interface CoffeeSelectorProps {
   onSelect: (coffeeType: string, coffeeInstance: ICoffee) => void
@@ -15,6 +16,7 @@ interface CoffeeSelectorProps {
 
 export function CoffeeSelector({ onSelect, selectedCoffee }: CoffeeSelectorProps) {
   const [hoveredCoffee, setHoveredCoffee] = useState<string | null>(null)
+  const { playSound } = useSound()
 
   const handleSelect = (coffeeType: string) => {
     const CoffeeClass = coffeeTypes[coffeeType as keyof typeof coffeeTypes]
@@ -43,8 +45,14 @@ export function CoffeeSelector({ onSelect, selectedCoffee }: CoffeeSelectorProps
                   selectedCoffee === coffeeType ? "bg-amber-600 hover:bg-amber-700" : "hover:bg-amber-100",
                   hoveredCoffee === coffeeType && "scale-105",
                 )}
-                onClick={() => handleSelect(coffeeType)}
-                onMouseEnter={() => setHoveredCoffee(coffeeType)}
+                onClick={() => {
+                  playSound("select")
+                  handleSelect(coffeeType)
+                }}
+                onMouseEnter={() => {
+                  setHoveredCoffee(coffeeType)
+                  playSound("click")
+                }}
                 onMouseLeave={() => setHoveredCoffee(null)}
               >
                 <CoffeeCup
