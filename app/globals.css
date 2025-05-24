@@ -58,7 +58,6 @@
   }
 }
 
-/* Animaciones básicas */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -167,71 +166,6 @@
   }
 }
 
-/* Nuevas animaciones */
-@keyframes ripple {
-  0% {
-    transform: scale(0);
-    opacity: 0.5;
-  }
-  100% {
-    transform: scale(2);
-    opacity: 0;
-  }
-}
-
-@keyframes shimmer {
-  0% {
-    background-position: -200% 0;
-  }
-  100% {
-    background-position: 200% 0;
-  }
-}
-
-@keyframes bounce {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-5px);
-  }
-}
-
-@keyframes wiggle {
-  0%,
-  100% {
-    transform: rotate(-2deg);
-  }
-  50% {
-    transform: rotate(2deg);
-  }
-}
-
-@keyframes pour {
-  0% {
-    height: 0%;
-    opacity: 0;
-  }
-  20% {
-    opacity: 1;
-  }
-  100% {
-    height: 100%;
-    opacity: 1;
-  }
-}
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* Clases de animación */
 .animate-fadeIn {
   animation: fadeIn 0.3s ease-out forwards;
 }
@@ -268,32 +202,6 @@
   animation: typeIn 0.8s steps(30, end) forwards;
   white-space: nowrap;
   overflow: hidden;
-}
-
-.animate-ripple {
-  animation: ripple 0.6s ease-out forwards;
-}
-
-.animate-shimmer {
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  background-size: 200% 100%;
-  animation: shimmer 2s infinite;
-}
-
-.animate-bounce {
-  animation: bounce 2s ease-in-out infinite;
-}
-
-.animate-wiggle {
-  animation: wiggle 1s ease-in-out;
-}
-
-.animate-pour {
-  animation: pour 1s ease-out forwards;
-}
-
-.animate-spin-slow {
-  animation: spin 3s linear infinite;
 }
 
 /* Coffee cup animation */
@@ -377,129 +285,4 @@
 .steam:nth-child(3) {
   animation-delay: 1.5s;
   left: 50%;
-}
-
-/* Nuevos efectos para el café */
-.coffee-liquid {
-  position: absolute;
-  bottom: 0;
-  left: 5%;
-  right: 5%;
-  border-radius: 0 0 0.5rem 0.5rem;
-  transition: height 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.coffee-liquid.pouring {
-  animation: pour 1s ease-out forwards;
-}
-
-.coffee-ripple {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 10px;
-  height: 10px;
-  background: rgba(255, 255, 255, 0.3);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.coffee-ripple.animate {
-  animation: ripple 0.6s ease-out forwards;
-}
-
-/* Efectos de hover mejorados */
-.hover-lift {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.hover-lift:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
-}
-
-.hover-glow {
-  transition: box-shadow 0.3s ease;
-}
-
-.hover-glow:hover {
-  box-shadow: 0 0 15px rgba(217, 119, 6, 0.5);
-}
-
-.hover-scale {
-  transition: transform 0.3s ease;
-}
-
-.hover-scale:hover {
-  transform: scale(1.03);
-}
-
-/* Efectos de fondo */
-.bg-gradient-animated {
-  background-size: 200% 200%;
-  animation: gradientMove 15s ease infinite;
-}
-
-@keyframes gradientMove {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-/* Efectos de click */
-.click-effect {
-  position: relative;
-  overflow: hidden;
-}
-
-.click-effect::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 5px;
-  height: 5px;
-  background: rgba(255, 255, 255, 0.7);
-  opacity: 0;
-  border-radius: 100%;
-  transform: scale(1);
-  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
-}
-
-.click-effect:active::after {
-  opacity: 0.3;
-  transform: scale(20);
-  transition: transform 0.3s ease-out, opacity 0.5s ease-out;
-}
-
-/* Efectos de partículas */
-.particle {
-  position: absolute;
-  background: rgba(217, 119, 6, 0.8);
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-/* Efecto de brillo para elementos seleccionados */
-.selected-glow {
-  box-shadow: 0 0 0 2px rgba(217, 119, 6, 0.3);
-  animation: selectedPulse 2s infinite;
-}
-
-@keyframes selectedPulse {
-  0% {
-    box-shadow: 0 0 0 2px rgba(217, 119, 6, 0.3);
-  }
-  50% {
-    box-shadow: 0 0 0 4px rgba(217, 119, 6, 0.2);
-  }
-  100% {
-    box-shadow: 0 0 0 2px rgba(217, 119, 6, 0.3);
-  }
 }
